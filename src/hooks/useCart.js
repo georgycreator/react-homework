@@ -1,9 +1,30 @@
-import { useCallback, useMemo, useReducer } from "react";
+import { useCallback, useEffect, useMemo, useReducer } from "react";
 import { cartReducer, initialCart } from "../cartReducer.js";
+
+const STORAGE_KEY = "cart";
+
+// Восстановление корзины при загрузке (ленивая инициализация useReducer)
+function loadCart() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(parsed?.items) ? parsed : initialCart;
+  } catch {
+    return initialCart;
+  }
+}
 
 // Пользовательский хук: вся логика корзины в одном месте.
 export function useCart() {
-  const [cart, dispatch] = useReducer(cartReducer, initialCart);
+  const [cart, dispatch] = useReducer(cartReducer, initialCart, loadCart);
+
+  // сохраняем корзину при каждом изменении
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+    } catch {
+      /* localStorage недоступен — не страшно */
+    }
+  }, [cart]);
 
   // add, remove, clear — через useCallback
   const add = useCallback((product) => dispatch({ type: "add", product }), []);
