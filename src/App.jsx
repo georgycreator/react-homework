@@ -1,4 +1,4 @@
-import { useMemo, useReducer, useState } from "react";
+import { useCallback, useMemo, useReducer, useState } from "react";
 import { products } from "./data.js";
 import { cartReducer, initialCart } from "./cartReducer.js";
 import Header from "./components/Header.jsx";
@@ -17,19 +17,31 @@ export default function App() {
     );
   }, [query, onlyInStock]);
 
-  // производные данные корзины
-  const totalCount = cart.items.reduce((sum, i) => sum + i.qty, 0);
-  const totalPrice = cart.items.reduce((sum, i) => sum + i.qty * i.price, 0);
-  const qtyById = {};
-  for (const i of cart.items) qtyById[i.id] = i.qty;
+  // 2. Стабильные обработчики (dispatch не меняется → зависимости пустые)
+  const onAdd = useCallback((product) => dispatch({ type: "add", product }), []);
+  const onRemove = useCallback((id) => dispatch({ type: "remove", id }), []);
+  const onClear = useCallback(() => dispatch({ type: "clear" }), []);
+
+  const totalCount = useMemo(
+    () => cart.items.reduce((sum, i) => sum + i.qty, 0),
+    [cart.items]
+  );
+  const totalPrice = useMemo(
+    () => cart.items.reduce((sum, i) => sum + i.qty * i.price, 0),
+    [cart.items]
+  );
+
+  // 3. В карточку передаём только нужное ей число, а не весь cart:
+  // cart — новый объект после каждого dispatch и сломал бы memo.
+  // qtyById = { [id]: qty } — useMemo от cart.items
+  const qtyById = useMemo(
+    () => Object.fromEntries(cart.items.map((i) => [i.id, i.qty])),
+    [cart.items]
+  );
 
   return (
     <div className="app">
-      <Header
-        totalCount={totalCount}
-        totalPrice={totalPrice}
-        onClear={() => dispatch({ type: "clear" })}
-      />
+      <Header totalCount={totalCount} totalPrice={totalPrice} onClear={onClear} />
       <SearchBar
         query={query}
         onQueryChange={setQuery}
@@ -42,8 +54,8 @@ export default function App() {
       <ProductList
         products={visible}
         qtyById={qtyById}
-        onAdd={(product) => dispatch({ type: "add", product })}
-        onRemove={(id) => dispatch({ type: "remove", id })}
+        onAdd={onAdd}
+        onRemove={onRemove}
       />
     </div>
   );

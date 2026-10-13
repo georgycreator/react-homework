@@ -1,11 +1,15 @@
-export default function ProductCard({ product, qty, onAdd, onRemove }) {
+import { memo } from "react";
+
+// 1. memo: перерисовка только при новых props
+const ProductCard = memo(function ProductCard({ product, qty, onAdd, onRemove }) {
+  console.log("render", product.id);
+
   return (
     <li className={"card" + (product.inStock ? "" : " card--out")}>
       <div className="card__title">{product.title}</div>
       <div className="card__price">{product.price} ₽</div>
       <div className="card__stock">{product.inStock ? "В наличии" : "Нет в наличии"}</div>
       <div className="card__actions">
-        {/* нет в наличии — кнопка неактивна */}
         <button onClick={() => onAdd(product)} disabled={!product.inStock}>
           В корзину
         </button>
@@ -20,4 +24,6 @@ export default function ProductCard({ product, qty, onAdd, onRemove }) {
       </div>
     </li>
   );
-}
+});
+
+export default ProductCard;
