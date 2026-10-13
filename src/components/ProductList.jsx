@@ -1,6 +1,7 @@
+import { memo } from "react";
 import ProductCard from "./ProductCard.jsx";
 
-export default function ProductList({ products, qtyById, onAdd, onRemove }) {
+const ProductList = memo(function ProductList({ products, qtyById, onAdd, onRemove }) {
   return (
     <ul className="list">
       {products.map((p) => (
@@ -14,4 +15,6 @@ export default function ProductList({ products, qtyById, onAdd, onRemove }) {
       ))}
     </ul>
   );
-}
+});
+
+export default ProductList;
