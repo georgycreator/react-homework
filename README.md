@@ -1,22 +1,18 @@
-﻿# React & TypeScript Homework Portfolio
+﻿## Homework 1 — TypeScript Tasks
 
-Мои учебные проекты по React, TypeScript и frontend-разработке.
-
-## Homework 2 — React Seminar
-
-Папка: [seminar3/](./seminar3/)
-
-Управление состоянием, оптимизация компонентов и пользовательские хуки.
-
-## Homework 3 — TypeScript Tasks
-
-Папка: [typescript-tasks/](./typescript-tasks/)
+Папка: [typescript-tasks/](https://github.com/georgycreator/react-homework/blob/main/typescript-tasks)
 
 Практические задания по TypeScript.
 
-## Homework 4 — Messenger Mini
+## Homework 2 — React Seminar
 
-Папка: [messenger-mini/](./messenger-mini/)
+Папка: [seminar3/](https://github.com/georgycreator/react-homework/blob/main/seminar3)
+
+Управление состоянием, оптимизация компонентов и пользовательские хуки.
+
+## Homework 3 — Messenger Mini
+
+Папка: [messenger-mini/](https://github.com/georgycreator/react-homework/blob/main/messenger-mini)
 
 React + TypeScript: авторизация, редактирование профиля,
 история сообщений и обмен сообщениями через WebSocket.
