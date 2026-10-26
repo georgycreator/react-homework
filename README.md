@@ -1,11 +1,45 @@
-﻿# React Homework Portfolio
+﻿# React & TypeScript Homework Portfolio
 
-Мои учебные проекты по React и TypeScript.
+Мои учебные проекты по React, TypeScript и frontend-разработке.
 
-## Projects
+## Homework 2 — React Seminar
 
-- `typescript-tasks/` — задания по TypeScript.
-- `seminar3/` — React: управление состоянием и оптимизация.
-- `messenger-mini/` — React + TypeScript: авторизация, профиль и чат с WebSocket.
+Папка: [seminar3/](./seminar3/)
 
-Каждый проект находится в отдельной папке и имеет собственную инструкцию по запуску.
+Управление состоянием, оптимизация компонентов и пользовательские хуки.
+
+## Homework 3 — TypeScript Tasks
+
+Папка: [typescript-tasks/](./typescript-tasks/)
+
+Практические задания по TypeScript.
+
+## Homework 4 — Messenger Mini
+
+Папка: [messenger-mini/](./messenger-mini/)
+
+React + TypeScript: авторизация, редактирование профиля,
+история сообщений и обмен сообщениями через WebSocket.
+
+## Запуск Messenger Mini
+
+Backend, первый терминал:
+
+    cd messenger-mini/server
+    npm install
+    npm start
+
+Frontend, второй терминал:
+
+    cd messenger-mini/frontend
+    npm install
+    npm run dev
+
+API: http://localhost:3001
+
+Swagger: http://localhost:3001/docs
+
+## Структура
+
+Каждое домашнее задание хранится в отдельной папке
+и имеет собственные исходники и зависимости.
