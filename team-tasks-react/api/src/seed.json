@@ -1,0 +1,18 @@
+{
+  "users": [
+    { "id": "1", "name": "Анна Волкова", "email": "anna@example.com" },
+    { "id": "2", "name": "Максим Орлов", "email": "maxim@example.com" },
+    { "id": "3", "name": "Елена Смирнова", "email": "elena@example.com" },
+    { "id": "4", "name": "Илья Ким", "email": "ilya@example.com" }
+  ],
+  "tasks": [
+    { "id": "1", "userId": "1", "title": "Подготовить план встречи", "status": "todo" },
+    { "id": "2", "userId": "1", "title": "Согласовать сроки релиза", "status": "doing" },
+    { "id": "3", "userId": "2", "title": "Проверить макеты профиля", "status": "done" },
+    { "id": "4", "userId": "2", "title": "Описать состояния загрузки", "status": "todo" },
+    { "id": "5", "userId": "3", "title": "Обновить список участников", "status": "done" },
+    { "id": "6", "userId": "3", "title": "Собрать отзывы команды", "status": "doing" },
+    { "id": "7", "userId": "4", "title": "Подготовить демо проекта", "status": "todo" },
+    { "id": "8", "userId": "4", "title": "Записать команды запуска", "status": "done" }
+  ]
+}
